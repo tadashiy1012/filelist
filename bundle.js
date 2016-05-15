@@ -100,7 +100,9 @@ var FlistBox = function (_React$Component) {
     _createClass(FlistBox, [{
         key: 'handleOpenFolder',
         value: function handleOpenFolder() {
-            console.log(remote);
+            remote.require('./mapFilelist')(function (arg) {
+                console.log(arg);
+            });
         }
     }, {
         key: 'render',

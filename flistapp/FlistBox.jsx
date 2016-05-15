@@ -15,7 +15,9 @@ export default class FlistBox extends React.Component {
         };
     }
     handleOpenFolder() {
-        console.log(remote);
+        remote.require('./mapFilelist')((arg) => {
+            console.log(arg);
+        });
     }
     render() {
         return (
