@@ -100,8 +100,14 @@ var FlistBox = function (_React$Component) {
     _createClass(FlistBox, [{
         key: 'handleOpenFolder',
         value: function handleOpenFolder() {
+            var _this2 = this;
+
             remote.require('./mapFilelist')(function (arg) {
                 console.log(arg);
+                var files = arg.map(function (file) {
+                    return { name: file };
+                });
+                _this2.setState({ files: files });
             });
         }
     }, {
@@ -112,7 +118,7 @@ var FlistBox = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     'button',
-                    { onClick: this.handleOpenFolder },
+                    { onClick: this.handleOpenFolder.bind(this) },
                     'open folder'
                 ),
                 _react2.default.createElement('br', null),

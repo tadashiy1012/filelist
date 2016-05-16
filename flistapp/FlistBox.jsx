@@ -17,12 +17,16 @@ export default class FlistBox extends React.Component {
     handleOpenFolder() {
         remote.require('./mapFilelist')((arg) => {
             console.log(arg);
+            const files = arg.map((file) => {
+                return {name: file};
+            });
+            this.setState({files: files});
         });
     }
     render() {
         return (
             <div>
-                <button onClick={this.handleOpenFolder}>open folder</button>
+                <button onClick={this.handleOpenFolder.bind(this)}>open folder</button>
                 <br />
                 <Flist files={this.state.files}/>
             </div>
